@@ -1,5 +1,5 @@
 class Inheritance {
-    
+
 }
 
 fun main(){
