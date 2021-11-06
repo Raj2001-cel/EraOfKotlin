@@ -9,7 +9,7 @@ class GetRequest:AppCompatActivity() {
     }
 
     @Throws(IOException::class)
-    fun getAllLeavesByReportId(context: Context, token: String, reportId: Long){
+    fun getThings(context: Context, token: String, reportId: Long){
 
         var result = ArrayList<JSONObject>()
         val requestQueue = Volley.newRequestQueue(context)
