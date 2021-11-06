@@ -1,0 +1,11 @@
+
+//this is to store the data in sharedpreferences
+val sharedPref = PreferenceManager.getDefaultSharedPreferences(context).edit()
+sharedPref.putString("couponcode", ""+JIO20)
+sharedPref.putBoolean("loggedIn", true)
+sharedPref.apply()
+
+//this to retrieve the data from sharedpreferences
+val sharedPref = PreferenceManager.getDefaultSharedPreferences(this@MainActivity)
+val isLoggedIn = sharedPref.getBoolean("logged",false)
+val couponCode  = sharedPref.getString("couponcode","defaultcode")
