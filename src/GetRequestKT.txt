@@ -1,0 +1,43 @@
+class GetRequest:AppCompatActivity() {
+
+ fun getHeaders(Authorization: String): Map<String, String>? {
+        val headers = HashMap<String, String>()
+        //ENTER ALL THE HEADERS YOU WANT TO PASS WITH THE REQUEST
+        headers["Accept"] = "application/json"
+        headers["Content-Type"] = "application/json"
+        return headers
+    }
+
+    @Throws(IOException::class)
+    fun getThings(context: Context, token: String, reportId: Long){
+
+        var result = ArrayList<JSONObject>()
+        val requestQueue = Volley.newRequestQueue(context)
+        val jsonObjectRequest: JsonArrayRequest = object : JsonArrayRequest(
+                Method.GET,
+              YOUR_REST_HTTP_REQUEST_URL,
+                null,
+                Response.Listener { response ->
+                    //DO WHATEVER WITH THE RESPONSE
+                },
+                Response.ErrorListener { error ->
+                    Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show()
+                    error.printStackTrace()
+                }) {
+
+            override fun getHeaders(): Map<String, String> {
+                val headers: MutableMap<String, String> = HashMap()
+                headers["Accept"] = "application/json"
+                headers["Content-Type"] = "application/json"
+                return headers
+            }
+
+            override fun getBodyContentType(): String {
+                return "application/json"
+            }
+        }
+
+        requestQueue.add(jsonObjectRequest)
+
+    }
+}
